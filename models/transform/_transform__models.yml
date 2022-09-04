@@ -1,20 +1,22 @@
 version: 2
 
 models:
-  - name: trf_customers
+  - name: trf_sales__customers
     config:
       materialized: table
       transient: true
+      alias: trf_braze_customers
     columns:
       - name: customer_id
         tests:
           - unique
           - not_null
 
-  - name: trf_orders
+  - name: trf_sales__orders
     config:
       materialized: table
       transient: true
+      alias: trf_braze_orders
     columns:
       - name: order_id
         tests:
@@ -28,5 +30,5 @@ models:
         tests:
           - not_null
           - relationships:
-              to: ref('stg_customers')
+              to: ref('trf_braze__customers')
               field: customer_id

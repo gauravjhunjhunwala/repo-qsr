@@ -1,12 +1,12 @@
 with customers as (
 
-    select * from {{ ref('trf_customers') }}
+    select * from {{ ref('trf_sales__customers') }}
 
 ),
 
 orders as (
 
-    select * from {{ ref('trf_orders') }}
+    select * from {{ ref('trf_sales__orders') }}
 
 ),
 
