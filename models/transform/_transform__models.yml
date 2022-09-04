@@ -1,0 +1,36 @@
+version: 2
+
+models:
+  - name: trf_sales__customers
+    config:
+      materialized: table
+      transient: true
+      alias: trf_braze_customers
+      schema: transform
+    columns:
+      - name: customer_id
+        tests:
+          - unique
+          - not_null
+
+  - name: trf_sales__orders
+    config:
+      materialized: table
+      transient: true
+      alias: trf_braze_orders
+      schema: transform
+    columns:
+      - name: order_id
+        tests:
+          - unique
+          - not_null
+      - name: status
+        tests:
+          - accepted_values:
+              values: ['placed', 'shipped', 'completed', 'return_pending', 'returned']
+      - name: customer_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('trf_braze__customers')
+              field: customer_id
