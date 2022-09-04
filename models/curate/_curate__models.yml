@@ -5,6 +5,7 @@ models:
     config:
       materialized: table
       transient: false
+      schema: curate
     columns:
       - name: customer_id
         tests:

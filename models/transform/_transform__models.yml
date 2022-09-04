@@ -6,6 +6,7 @@ models:
       materialized: table
       transient: true
       alias: trf_braze_customers
+      schema: transform
     columns:
       - name: customer_id
         tests:
@@ -17,6 +18,7 @@ models:
       materialized: table
       transient: true
       alias: trf_braze_orders
+      schema: transform
     columns:
       - name: order_id
         tests:
