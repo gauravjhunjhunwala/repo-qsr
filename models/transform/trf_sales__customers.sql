@@ -5,5 +5,9 @@ select
 
 from 
 --raw.jaffle_shop.customers
-
 {{ source('BRAZE', 'customers') }}
+
+{% if target.name != 'prod' %}
+LIMIT 5
+{% endif %}
+
